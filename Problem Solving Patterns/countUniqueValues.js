@@ -4,18 +4,17 @@ function countUniqueValues(arr) {
     let j = i + 1;
 
     if(arr.length == 0){
-        
-        return 0 
+        return 0 ;
     }
 
     while (j < arr.length) {
-        const element = arr[i]
-        const comparingElement = arr[j]
+        const element = arr[i];
+        const comparingElement = arr[j];
         if (element == comparingElement) {
             j++
         } else if (element != comparingElement) {
-            i++
-            arr[i] = comparingElement
+            i++;
+            arr[i] = comparingElement;
             j++
         }
     }
