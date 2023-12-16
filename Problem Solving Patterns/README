@@ -22,3 +22,11 @@ Write a function called isSubsequence which takes in two strings and checks whet
 Your solution MUST have AT LEAST the following complexities:
 Time Complexity - O(N + M)
 Space Complexity - O(1)
+
+07.maxSubarraySum
+Given an array of integers and a number, write a function called maxSubarraySum, which finds the maximum sum of a subarray with the length of the number passed to the function.
+Note that a subarray must consist of consecutive elements from the original array. In the first example below, [100, 200, 300] is a subarray of the original array, but [100, 300] is not.
+
+Constraints:
+Time Complexity - O(N)
+Space Complexity - O(1)
