@@ -35,3 +35,8 @@ Write a recursive function called capitalizeWords. Given an array of words, retu
 
 11.stringifyNumbers
 Write a function called stringifyNumbers which takes in an object and finds all of the values which are numbers and converts them to strings. Recursion would be a great way to solve this!
+
+12.collectStrings
+Write a function called collectStrings which accepts an object and returns an array of all the values in the object that have a typeof string
+
+
