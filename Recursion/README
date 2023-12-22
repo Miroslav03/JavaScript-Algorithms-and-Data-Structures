@@ -23,3 +23,15 @@ Write a recursive function called reverse which accepts a string and returns a n
 
 07.isPalindrome
 Write a recursive function called isPalindrome which returns true if the string passed to it is a palindrome (reads the same forward and backward). Otherwise it returns false.
+
+08.capitalizeFirst
+Write a recursive function called capitalizeFirst. Given an array of strings, capitalize the first letter of each string in the array.
+
+09.nestedEvenSum
+Write a recursive function called nestedEvenSum. Return the sum of all even numbers in an object which may contain nested objects.
+
+10.capitalizeWords
+Write a recursive function called capitalizeWords. Given an array of words, return a new array containing each word capitalized.
+
+11.stringifyNumbers
+Write a function called stringifyNumbers which takes in an object and finds all of the values which are numbers and converts them to strings. Recursion would be a great way to solve this!
