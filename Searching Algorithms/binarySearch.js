@@ -23,7 +23,6 @@ function binarySearch(sortedArr, num) {
     if (sortedArr[middlePointer] === num) {
         return middlePointer;
     }
-    
 
 }
 
