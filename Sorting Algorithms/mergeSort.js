@@ -35,4 +35,4 @@ function merge(leftPart, rightPart) {
 
 }
 
-console.log(mergeSort([34,2,1,3]));
+console.log(mergeSort([324,5612,54,5,2,1,5,23,423,423,1,1,43,523,5,6,3,3]));
