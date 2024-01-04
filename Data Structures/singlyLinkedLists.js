@@ -203,6 +203,6 @@ const singlyLinkedList = new SinglyLinkedList()
 singlyLinkedList.push('Qvorov');
 singlyLinkedList.push('Ivanov');
 singlyLinkedList.push('Miroslav')
-singlyLinkedList.reverse(1)
+singlyLinkedList.reverse()
 console.log(singlyLinkedList);
 
