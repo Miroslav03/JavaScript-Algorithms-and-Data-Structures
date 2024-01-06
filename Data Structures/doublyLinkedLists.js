@@ -146,18 +146,86 @@ class DoublyLinkedList {
         return false;
     }
 
-    insert() {
+    insert(index, value) {
+        //If the index is less than zero or greater than the length return false
+        if (index < 0 || index > this.length) return false;
+        //If the index is 0, unshift
+        if (index === 0) {
+            this.unshift(value);
+            return true;
+        }
+        //If the index is the same as the length, push
+        if (index === this.length) {
+            this.push(value);
+            return true;
+        }
+        //Create the new Node
+        const newNode = new Node(value)
+        //Use the get method to access the index -1
+        const previousNode = this.get(index - 1);
+
+        //Set the next and prev properties on the correct nodes to link everything together
+        previousNode.next = newNode
+        newNode.prev = previousNode
+        newNode.next = previousNode.next
+        previousNode.next.prev = newNode
+        //Increment the length
+        this.length++
+        //Return the node
+        return newNode;
+    }
+
+    remove(index) {
+        //If the index is less than zero or greater than or equal to the length return undefined
+        if (index < 0 || index >= this.length) return undefined;
+        //If the index is 0, shift
+        if (index === 0) return this.shift();
+        //If the index is the same as the length-1, pop
+        if (index === this.length - 1) return this.pop();
+
+        //Use the get method to retrieve the item to be removed • Update the next and prev properties to remove the found node from the list
+        const prevNode = this.get(index - 1);
+        const removedNode = this.get(index);
+        const nextNOde = this.get(index + 1);
+
+        //Set next and prev to null on the found node
+        removedNode.prev = null;
+        removedNode.next = null;
+        //Conect the prev and next nodes
+        prevNode.next = nextNOde;
+        nextNOde.prev = prevNode;
+        //Decrement the length
+        this.length--;
+        //Return the removed node.
+        return removedNode;
 
     }
 
-    remove() {
-
+    reverse() {
+        //Switch the tail and the head
+        let node = this.head;
+        this.head = this.tail;
+        this.tail = node;
+        //Create two pointers
+        let next
+        let prev = null;
+        for (let i = 0; i < this.length; i++) {
+            next = node.next;
+            node.next = prev;
+            node.prev = next;
+            node = next;
+            prev = node;
+        }
+        //Viualization
+        //[100,200,300,400]
+        return this;
     }
+
 }
 
 let doublyLinkedList = new DoublyLinkedList()
 doublyLinkedList.push(1)
 doublyLinkedList.push(2)
 doublyLinkedList.push(3)
-doublyLinkedList.set(1,'Miro')
-console.log(doublyLinkedList.get(1));
+doublyLinkedList.reverse()
+console.log(doublyLinkedList);
