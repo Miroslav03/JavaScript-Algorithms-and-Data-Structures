@@ -15,7 +15,7 @@ class BinaryHeap {
             let addedValue = this.values[index];
             let parentIndex = Math.floor((index - 1) / 2);
             let parent = this.values[parentIndex];
-            //Chek if the value is greater than its parent
+            //Check if the value is greater than its parent
             if (addedValue > parent) {
                 //If greater we swap them and change the index
                 [this.values[index], this.values[parentIndex]] = [this.values[parentIndex], this.values[index]];
@@ -25,7 +25,7 @@ class BinaryHeap {
                 break;
             }
         }
-        //Return the value
+        //Return the heap
         return this.values;
     }
 
