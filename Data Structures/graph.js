@@ -1,5 +1,5 @@
 //Implementing a undirected Graph using an adjacencyList
-
+//Traversing a graph with Depth and Breadth First Search
 class Graph {
     constructor() {
         this.adjacencyList = {};
@@ -50,36 +50,130 @@ class Graph {
             if (this.adjacencyList[vertex1].includes(vertex2)) {
                 //Filters out the specified vertices from each other's adjacency lists.
                 this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter(x => x !== vertex2);
-            }else{
+            } else {
                 //Throws an error if any of the vertices is missing in the graph or if the edge is not found.
                 throw new Error('Missing Edge');
             }
             if (this.adjacencyList[vertex2].includes(vertex1)) {
                 this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(x => x !== vertex1);
-            }else{
+            } else {
                 throw new Error('Missing Edge');
             }
         } else {
             throw new Error('Missing vertex in the graph!');
         }
     }
+
+    depthFirstSearchRecursivly(start) {
+        //Performs a depth-first search (DFS) on the graph starting from the specified vertex.
+        //Uses a recursive approach.
+
+        //Initializes an empty result array to store the visited vertices.
+        const result = [];
+        //Utilizes a visited object to track which vertices have been visited.
+        const visited = {};
+        const adjList = this.adjacencyList;
+        
+        function depthFirstSearch(vertex) {
+            //Traverses through the graph, marking each visited vertex and adding it to the result array.
+            if (!vertex) return null; //Base
+            visited[vertex] = true;
+            result.push(vertex);
+            
+            adjList[vertex].forEach(neighbor => {
+                if (!visited[neighbor]) {
+                    return depthFirstSearch(neighbor)
+                }
+            });
+        }
+        //Returns the result array containing the order of visited vertices.
+        depthFirstSearch(start)
+        return result;
+    }
+
+    depthFirstSearchIteratively(start) {
+        //Performs a depth-first search (DFS) on the graph starting from the specified vertex.
+        //Uses an iterative approach with a stack to mimic recursion.
+
+        //Initializes an empty result array, a visited object, and a stack.
+        const result = [];
+        const visited = {};
+        const stack = [start];
+        let currentVertex = null;
+        
+        while (stack.length) {
+            //Pops vertices from the stack, marks them as visited, and adds them to the result array.
+            const currentVertex = stack.pop();
+            visited[currentVertex] = true;
+            result.push(currentVertex);
+            
+            //Iterates through the neighbors of the current vertex, pushing unvisited neighbors onto the stack.
+            for (const neighbour of this.adjacencyList[currentVertex]) {
+                if (!visited[neighbour]) {
+                    stack.push(neighbour);
+                    visited[neighbour] = true;
+                }
+            }
+        }
+        //Returns the result array containing the order of visited vertices.
+        return result;
+    }
+
+    breadFirstSearch(start){
+        //Performs a breadth-first search (BFS) on the graph starting from the specified vertex.
+        //Uses a queue to explore vertices level by level.
+        
+        //Initializes an empty result array, a queue, and a visited array.
+        const result = [];
+        const queue = [start];
+        const visited = [];
+        
+        while (queue.length) {
+            //Dequeues vertices from the front of the queue, marks them as visited, and adds them to the result array.
+            const currentVertex = queue.shift();
+            visited[currentVertex] = true;
+            result.push(currentVertex);
+            
+            for (const neighbor of this.adjacencyList[currentVertex]) {
+                //Enqueues unvisited neighbors of the current vertex onto the back of the queue.
+                //Continues the process until the queue is empty.
+                if(!visited[neighbor]){
+                    queue.push(neighbor);
+                    visited[neighbor] = true;
+                }
+            }
+        }
+        //Returns the result array containing the order of visited vertices.
+        return result;
+    }
 }
 
 const graph = new Graph();
 
-graph.addVertex('Sofia');
-graph.addVertex('Plovdiv');
-graph.addVertex('Haskovo');
-graph.addVertex('Stara Zagora');
-graph.addVertex('Varna');
-graph.addVertex('Burgas');
+graph.addVertex("A")
+graph.addVertex("B")
+graph.addVertex("C")
+graph.addVertex("D")
+graph.addVertex("E")
+graph.addVertex("F")
 
-graph.addEdge('Sofia','Plovdiv');
-graph.addEdge('Sofia','Burgas');
-graph.addEdge('Sofia','Stara Zagora');
-graph.addEdge('Plovdiv','Varna');
-graph.addEdge('Plovdiv','Burgas');
 
-graph.removeEdge('Sofia','Plovdiv');
-graph.removeVertex('Sofia')
+graph.addEdge("A", "B")
+graph.addEdge("A", "C")
+graph.addEdge("B", "D")
+graph.addEdge("C", "E")
+graph.addEdge("D", "E")
+graph.addEdge("D", "F")
+graph.addEdge("E", "F")
 
+//          A
+//        /   \
+//       B     C
+//       |     |
+//       D --- E
+//        \   /
+//          F
+
+console.log(graph.depthFirstSearchRecursivly('A'));
+console.log(graph.depthFirstSearchIteratively('A'));
+console.log(graph.breadFirstSearch('A'));
