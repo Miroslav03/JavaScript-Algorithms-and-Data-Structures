@@ -1,2 +1,9 @@
-# JavaScript-Algorithms-and-Data-Structures
-JavaScript Algorithms and Data Structures Masterclass
+Welcome to the Data Structures and Algorithms repository! 🚀 This repository serves as a comprehensive collection of well-documented implementations and explanations for various data structures and algorithms commonly used in computer science and programming interviews.
+Contents:
+
+    Searching Algorithms: Binary Search, Linear Search, ...
+
+    Sorting Algorithms: Bubble Sort, Quick Sort, Merge Sort, ...
+
+    Data Structures: Binary Search Tree, Unweighted Graph, Binary Heap,...
+
