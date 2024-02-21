@@ -1,4 +1,4 @@
-Welcome to the Data Structures and Algorithms repository! 🚀 This repository serves as a comprehensive collection of well-documented implementations and explanations for various data structures and algorithms commonly used in computer science and programming interviews.
+Welcome to the Data Structures and Algorithms repository! This repository serves as a comprehensive collection of well-documented implementations and explanations for various data structures and algorithms commonly used in computer science and programming interviews.
 Contents:
 
     Searching Algorithms: Binary Search, Linear Search, ...
